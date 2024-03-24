@@ -1,14 +1,26 @@
-# LARAVEL API AND FLUTTER APP
-## WORKSHOP FOLLOW-UP
- 1. Create Laravel
-	
-    {
-        <?php
+## LARAVEL API
 
+1.  Create Laravel application
+    
+    `laravel new api-advertisement`
+    
+    OR
+    
+    `composer create-project laravel/laravel api-advertisement`
+    
+2.  Update the create\_user\_table migration
+    
+    Add `$table->boolean('is_admin')->default(false);` to the code
+    
+    The create\_user\_table file content will become
+    
+    ```php
+    <?php
+    
     use Illuminate\Database\Migrations\Migration;
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
-
+    
     return new class extends Migration
     {
         /**
@@ -26,13 +38,13 @@
                 $table->rememberToken();
                 $table->timestamps();
             });
-
+    
             Schema::create('password_reset_tokens', function (Blueprint $table) {
                 $table->string('email')->primary();
                 $table->string('token');
                 $table->timestamp('created_at')->nullable();
             });
-
+    
             Schema::create('sessions', function (Blueprint $table) {
                 $table->string('id')->primary();
                 $table->foreignId('user_id')->nullable()->index();
@@ -42,7 +54,7 @@
                 $table->integer('last_activity')->index();
             });
         }
-
+    
         /**
          * Reverse the migrations.
          */
@@ -53,4 +65,7 @@
             Schema::dropIfExists('sessions');
         }
     };
-
+    ```
+    
+3.  another
+4.  another
